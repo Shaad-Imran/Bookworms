@@ -18,3 +18,19 @@ const toggleNavbar = function () {
 };
 
 addEventOnElement(navToggler, "click", toggleNavbar);
+
+/**
+ * header active on scroll down to 100px
+ */
+
+const header = document.querySelector(".header");
+
+const activeHeader = function () {
+  if (window.scrollY > 100) {
+    header.classList.add("active");
+  } else {
+    header.classList.remove("active");
+  }
+};
+
+addEventOnElement(window, "scroll", activeHeader);
