@@ -449,6 +449,75 @@ body {
   z-index: -1;
 }
 
+/* #benefits  */
+.benefits .section-text {
+  text-align: center;
+  margin-block: 8px 25px;
+}
+
+.benefits-card {
+  padding: 25px;
+  box-shadow: var(--shadow-2);
+  border-radius: var(--radius-5);
+  overflow: hidden;
+  transition: var(--transition-2);
+}
+
+.benefits-card::before,
+.benefits-card::after {
+  bottom: 0;
+  right: 0;
+  clip-path: var(--polygon);
+  transition: var(--transition-2);
+}
+
+.benefits-card::before {
+  width: 80px;
+  height: 80px;
+  background-color: var(--old-rose_30);
+  transform: translateY(60px);
+}
+
+.benefits-card::after {
+  width: 70px;
+  height: 70px;
+  background-color: var(--chinese-violet_30);
+  transform: translateY(65px);
+}
+
+.benefits-card:is(:hover, :focus-within) {
+  transform: translateY(-10px);
+}
+
+.benefits-card:is(:hover, :focus-within)::before,
+.benefits-card:is(:hover, :focus-within)::after {
+  transform: translateY(0);
+}
+
+.benefits-card:is(:hover, :focus-within)::after {
+  transition-delay: 0.1s;
+}
+
+.benefits-card .card-icon {
+  background-color: var(--old-rose);
+  max-width: max-content;
+  padding: 10px;
+  box-shadow: var(--shadow-3);
+  transition: var(--transition-1);
+}
+
+.benefits-card:is(:hover, :focus) .card-icon {
+  box-shadow: none;
+}
+
+.benefits-card .card-title {
+  margin-block: 20px 15px;
+}
+
+.benefits-card .btn-link {
+  margin-block-start: 15px;
+}
+
 @media (min-width: 575px) {
   :root {
     --fs-2: 4.5rem;
@@ -466,6 +535,10 @@ body {
 
   .header {
     top: 30px;
+  }
+
+  .header.active {
+    max-width: unset;
   }
 
   .navbar {
@@ -489,6 +562,10 @@ body {
     max-width: 720px;
   }
 
+  .grid-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .hero {
     padding-block-start: calc(var(--section-padding) + 100px);
     text-align: left;
@@ -502,6 +579,14 @@ body {
   .hero .section-subtitle {
     text-align: left;
   }
+
+  .benefits :is(.section-title, .section-text) {
+    text-align: left;
+  }
+
+  .benefits-content {
+    grid-column: 1 / 3;
+  }
 }
 
 @media (min-width: 992px) {
@@ -514,6 +599,10 @@ body {
   .header,
   .navbar {
     max-width: 960px;
+  }
+
+  .grid-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .header .container {
@@ -533,6 +622,15 @@ body {
     margin-block-end: 0;
     display: flex;
     gap: 30px;
+  }
+
+  .benefits .grid-list {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+  }
+
+  .benefits-content {
+    max-width: 80%;
   }
 }
 
