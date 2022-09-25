@@ -14,7 +14,6 @@
   --seashell: hsl(20, 43%, 93%);
   --charcoal: hsl(203, 30%, 26%);
   --white: hsl(0, 0%, 100%);
-
   /**
      * typography
      */
@@ -258,7 +257,7 @@ body {
 
 .has-underline {
   position: relative;
-  margin-block-end: 60px;
+  margin-block-end: 6rem;
 }
 
 .has-underline .span {
@@ -384,7 +383,6 @@ body {
   left: 0;
   width: 100%;
   background-color: var(--white);
-  background-color: rgb(190, 255, 190);
   padding-inline: 1.5rem;
   max-height: 0;
   overflow: hidden;
@@ -518,6 +516,141 @@ body {
   margin-block-start: 15px;
 }
 
+.chapter-card {
+  height: 100%;
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: var(--radius-5);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-2);
+}
+
+.chapter-card:is(:hover, :focus-within) {
+  transform: translateY(-10px);
+}
+
+.chapter-card .card-title {
+  margin-block-end: 15px;
+}
+
+.tab-list {
+  flex-direction: row;
+  gap: 20px;
+}
+
+.tab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tab-card {
+  position: relative;
+  height: 60px;
+  background-color: var(--seashell);
+  border-radius: var(--radius-10);
+  box-shadow: var(--shadow-3);
+  display: grid;
+  place-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition-1);
+}
+
+.tab-card.active .w-100 {
+  opacity: 1;
+}
+
+.tab-card .w-100 {
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--transition-2);
+}
+
+.tab-card.active {
+  height: 40vh;
+  box-shadow: none;
+}
+
+.tab-text {
+  font-size: var(--fs-4);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tab-card.active .tab-text {
+  display: none;
+}
+
+.pricing-card {
+  padding: 4rem 5rem;
+  background-color: var(--white);
+  text-align: center;
+  transition: var(--transition-2);
+}
+
+.pricing-card:is(:hover, :focus-within),
+.pricing-card.bundle {
+  box-shadow: var(--shadow-4);
+}
+
+.pricing-card:is(:hover, :focus-within) {
+  transform: translateY(-10px);
+}
+
+.pricing-card .price {
+  font-family: var(--ff-philosopher);
+  font-size: var(--fs-1);
+  color: var(--charcoal);
+  font-weight: var(--fw-700);
+  margin-block-start: 10px;
+}
+
+.pricing-card-list {
+  margin-block: 20px 40px;
+}
+
+.pricing-card .card-text {
+  padding-block: 10px;
+}
+
+.pricing-card .btn {
+  margin-inline: auto;
+}
+
+.pricing-card-list .card-item:not(:last-child) {
+  border-block-end: 1px solid var(--ghost-white);
+}
+
+.author {
+  background-color: var(--seashell);
+}
+
+.author .container {
+  display: grid;
+  gap: 40px;
+}
+
+.author :is(.section-subtitle, .section-title) {
+  text-align: left;
+}
+
+.author-content {
+  background-color: var(--white);
+  padding: 30px;
+}
+
+.author-name {
+  font-size: var(--fs-6);
+  margin-block-end: 30px;
+}
+
+.author .section-text {
+  font-size: unset;
+}
+
 @media (min-width: 575px) {
   :root {
     --fs-2: 4.5rem;
@@ -548,6 +681,10 @@ body {
 
   .section-text {
     --fs-7: 2rem;
+  }
+
+  .tab-card.active {
+    height: 50vh;
   }
 }
 
@@ -586,6 +723,21 @@ body {
 
   .benefits-content {
     grid-column: 1 / 3;
+  }
+
+  :is(.chapters, .pricing) .grid-list li:last-child {
+    grid-column: 1 / 3;
+    max-width: calc(50% - 12.5px);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .tab-card.active {
+    height: 70vh;
+  }
+
+  .author .h2 {
+    --fs-3: 4.2rem;
   }
 }
 
@@ -632,6 +784,41 @@ body {
   .benefits-content {
     max-width: 80%;
   }
+
+  :is(.chapters, .pricing) .grid-list li:last-child {
+    all: unset;
+  }
+
+  .tab-list {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .tab-text {
+    text-orientation: upright;
+    white-space: nowrap;
+    writing-mode: vertical-lr;
+  }
+
+  .tab-card {
+    height: 70vh;
+    max-width: 60px;
+  }
+
+  .tab-card.active {
+    max-width: 650px;
+  }
+
+  .author .container {
+    grid-template-columns: 0.6fr 1fr;
+    gap: 0;
+  }
+
+  .author-content {
+    margin-block-start: 40px;
+    margin-inline-start: -30px;
+    padding-block-end: 70px;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -646,5 +833,17 @@ body {
   .header,
   .navbar {
     max-width: 1140px;
+  }
+
+  .tab-card {
+    max-width: 75px;
+  }
+
+  .tab-card.active {
+    max-width: 750px;
+  }
+
+  .author-content {
+    padding: 85px 60px 115px;
   }
 }

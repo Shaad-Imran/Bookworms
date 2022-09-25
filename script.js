@@ -1,8 +1,8 @@
 const addEventOnElement = function (elem, type, callback) {
   if (elem.length > 1) {
-    elem.map((curElem) => {
-      curElem.addEventListener(type, callback);
-    });
+    for (let i = 0; i < elem.length; i++) {
+      elem[i].addEventListener(type, callback);
+    }
   } else {
     elem.addEventListener(type, callback);
   }
@@ -34,3 +34,19 @@ const activeHeader = function () {
 };
 
 addEventOnElement(window, "scroll", activeHeader);
+
+/**
+ * filter tab
+ */
+
+const tabCard = document.querySelectorAll(".tab-card");
+
+let lastTabCard = tabCard[0];
+
+const navigateTab = function () {
+  lastTabCard.classList.remove("active");
+  this.classList.add("active");
+  lastTabCard = this;
+};
+
+addEventOnElement(tabCard, "click", navigateTab);
